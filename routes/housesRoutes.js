@@ -1,25 +1,38 @@
 //Import
 const express = require("express");
 const router = express.Router();
-const housesControllers = require("../controllers/housesControllers");
+// Controllers
+const housesController = require("../controllers/housesController");
+const reviewController = require("../controllers/reviewsController");
+const likesController = require("../controllers/likesController");
+const messagesController = require("../controllers/messagesController");
+
+// Middlewares
 const publicUpload = require("../middlewares/fileUpload");
 
+// HOUSES ROUTES
 // Index
-router.get("/", housesControllers.index);
+router.get("/", housesController.index);
 
 // Show
-router.get("/:slug", housesControllers.show);
+router.get("/:slug", housesController.show);
 
-// Store - house
-router.post("/", publicUpload.array("foto", 10), housesControllers.storeHouse);
+// Store 
+router.post("/", publicUpload.array("foto", 10), housesController.storeHouse);
 
-// Store - house review
-router.post("/:id/review", housesControllers.storeReview);
+// Update
+router.patch("/:id/updateHouse", housesController.updateHouse);
 
-// Store -host message
-router.post("/:id/message", housesControllers.storeMessage);
+// REVIEWS ROUTES
+// Store 
+router.post("/:id/review", reviewController.storeReview);
 
-// Store - house like
-router.post("/:id/like", housesControllers.storeLike);
+// GUESTS MESSAGES ROUTES
+// Store
+router.post("/:id/message", messagesController.storeMessage);
+
+// LIKES ROUTES
+// Store like
+router.post("/:id/like", likesController.storeLike);
 
 module.exports = router;
