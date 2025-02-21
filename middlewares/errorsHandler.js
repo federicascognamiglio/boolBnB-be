@@ -1,6 +1,6 @@
 const errorsHandler = (err, req, res, next) => {
     const resObj = {
-        status: "Ce la puoi fare, dai!",
+        status: "Internal Server Error",
         message: err.message,
         type: err.stack
     }
