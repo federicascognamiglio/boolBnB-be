@@ -42,4 +42,22 @@ const storeReview = (req, res) => {
     })
 }
 
-module.exports = { storeReview }
+// Destroy
+const deleteReview = (req, res) => {
+    const id = req.params
+
+    const sql = `DELETE FROM reviews where id = ?`
+
+    connection.query(sql, [id], (error, result) => {
+        if (err)
+            return res.status(500).json({ error: 'Database query failed' })
+        if (result.affectedRows === 0)
+            return res.status(404).json({ error: "Review not found" })
+        res.status(200).json({ message: "Review deleted" })
+    })
+}
+
+module.exports = { 
+    storeReview,
+    deleteReview
+}

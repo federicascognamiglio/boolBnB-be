@@ -13,22 +13,20 @@ const publicUpload = require("../middlewares/fileUpload");
 // HOUSES ROUTES
 // Index
 router.get("/", housesController.index);
-
 // Show
 router.get("/:slug", housesController.show);
-
 // Store 
 router.post("/", publicUpload.array("foto", 10), housesController.storeHouse);
-
 // Update
 router.patch("/:id/updateHouse", housesController.updateHouse);
-
 // Destroy
 router.delete("/:id/deleteHouse", housesController.deleteHouse);
 
 // REVIEWS ROUTES
 // Store 
 router.post("/:id/review", reviewController.storeReview);
+// Destroy
+router.delete("/:id/deleteReview", reviewController.deleteReview);
 
 // GUESTS MESSAGES ROUTES
 // Store

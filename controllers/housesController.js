@@ -333,8 +333,8 @@ const deleteHouse = (req, res) => {
         if (err)
             return res.status(500).json({ error: 'Database query failed' })
         if (result.affectedRows === 0)
-            return res.status(404).json({ error: "Item not found" })
-        res.status(200).json({ message: "Item deleted" })
+            return res.status(404).json({ error: "House not found" })
+        res.status(200).json({ message: "House deleted" })
     })
 }
 
