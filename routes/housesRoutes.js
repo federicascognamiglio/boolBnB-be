@@ -23,6 +23,9 @@ router.post("/", publicUpload.array("foto", 10), housesController.storeHouse);
 // Update
 router.patch("/:id/updateHouse", housesController.updateHouse);
 
+// Destroy
+router.delete("/:id/deleteHouse", housesController.deleteHouse);
+
 // REVIEWS ROUTES
 // Store 
 router.post("/:id/review", reviewController.storeReview);
